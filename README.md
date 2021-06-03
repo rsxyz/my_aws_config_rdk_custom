@@ -1,10 +1,12 @@
 ## custom config rule
 
 https://rdk.readthedocs.io/en
+
 https://github.com/awslabs/aws-config-rdk
+
 https://github.com/awslabs/aws-config-rules
 
-'''
+```
 $ python3 -m venv .venv
 $ source .venv/bin/activate
 $ pip install rdk
@@ -21,9 +23,11 @@ Config setup complete.
 Creating Code bucket config-rule-code-bucket-xxxxxxxxxxxx-us-east-1
 $
 
-'''
+```
 
-#Rule to t2-micro desired instance type
+# Rule to t2-micro desired instance type
+
+```
 $ rdk sample-ci AWS::EC2::Instance
 $ rdk create ec2_desired_instance_type --runtime python3.7 --resource-types AWS::EC2::Instance --input-parameters '{"desiredInstanceType":"t2.micro"}'
 
@@ -39,9 +43,11 @@ edit: ec2_desired_instance_type.py file and add code
         return 'COMPLIANT'
 
     return 'NON_COMPLIANT'
+```
 
-#run unit test
-'''
+# run unit test
+
+```
 $ rdk test-local ec2_desired_instance_type
 Running local test!
 Testing ec2_desired_instance_type
@@ -59,17 +65,19 @@ Ran 3 tests in 0.002s
 
 OK
 <unittest.runner.TextTestResult run=3 errors=0 failures=0>
-'''
+```
 
 # change compliant rule eval frequency
 
-'''
+```
 $ rdk modify ec2_desired_instance_type --maximum-frequency One_Hour
 Running modify!
 Modified Rule 'ec2_desired_instance_type'. Use the `deploy` command to push your changes to AWS.
-'''
-#deploy rule
-'''
+```
+
+# deploy rule
+
+```
 $ rdk deploy ec2_desired_instance_type
 Running deploy!
 Found Custom Rule.
@@ -81,4 +89,4 @@ Waiting for CloudFormation stack operation to complete...
 ...
 CloudFormation stack operation complete.
 Config deploy complete.
-'''
+```
