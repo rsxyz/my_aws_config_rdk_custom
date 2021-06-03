@@ -1,0 +1,14 @@
+{
+  "Version": "1.0",
+  "Parameters": {
+    "RuleName": "ec2_desired_instance_type",
+    "Description": "ec2_desired_instance_type",
+    "SourceRuntime": "python3.6-lib",
+    "CodeKey": "ec2_desired_instance_type.zip",
+    "InputParameters": "{\"desiredInstanceType\": \"t2.micro\"}",
+    "OptionalParameters": "{}",
+    "SourceEvents": "AWS::EC2::Instance",
+    "SourcePeriodic": "One_Hour"
+  },
+  "Tags": "[]"
+}
